@@ -7,8 +7,10 @@ async function start() {
     //Registro das rotas
     await registerRoutes(app)
 
-    const PORT = app.config.PORT || 3001
-    await app.listen({ port: app.config.PORT || 3001 })
+    const PORT = app.config.PORT
+    const HOST = app.config.HOST
+
+    await app.listen({ host: HOST, port: PORT })
     console.log(`Server Initialized on port ${PORT}`)
   } catch (err) {
     console.error('Error starting server:', err)

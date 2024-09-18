@@ -4,9 +4,16 @@ import fastifyMultipart from '@fastify/multipart'
 import { envSchema } from '../config/envSchema'
 import cors from '@fastify/cors'
 
+// import fs from 'fs'
+// import path from 'path'
+
 export async function buildServer() {
   const app = fastify({
-    logger: true
+    logger: true,
+    // https: {
+    //   key: fs.readFileSync(path.join(__dirname, '../certificates/key.pem')),
+    //   cert: fs.readFileSync(path.join(__dirname, '../certificates/cert.pem'))
+    // }
   })
 
   const envOptions = {

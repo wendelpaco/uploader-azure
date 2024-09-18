@@ -4,6 +4,7 @@ declare module 'fastify' {
   interface FastifyInstance {
     config: {
       UPLOAD_SERVICE_URL: string
+      HOST: string
       PORT: number
       AZURE_STORAGE_ACCOUNT_NAME: string
       AZURE_STORAGE_ACCESS_KEY: string

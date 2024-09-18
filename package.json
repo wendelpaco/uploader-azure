@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "main": "src/http/app.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && npm run copy-certificates",
+    "copy-certificates": "cpx ./src/certificates/**/* ./dist/certificates",
     "start": "node dist/http/app.js",
-    "dev": "tsx watch src/http/app.ts"
+    "dev": "tsx watch src/http/app.ts",
+    "dev:prod": "tsc && yarn start"
   },
   "keywords": [],
   "author": {

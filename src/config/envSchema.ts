@@ -2,6 +2,7 @@
 import { Type, Static } from '@sinclair/typebox'
 
 export const envSchema = Type.Object({
+  HOST: Type.String({ default: '0.0.0.0' }),
   PORT: Type.Number({ default: 3001 }),
   AZURE_STORAGE_ACCOUNT_NAME: Type.String({ default: '' }),
   AZURE_STORAGE_ACCESS_KEY: Type.String({ default: '' }),
