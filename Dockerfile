@@ -14,7 +14,6 @@ ENV NODE_ENV="production"
 ARG YARN_VERSION=1.22.22
 RUN npm install -g yarn@$YARN_VERSION --force
 
-
 # Throw-away build stage to reduce size of final image
 FROM base as build
 
@@ -23,18 +22,17 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential node-gyp pkg-config python-is-python3
 
 # Install node modules
-COPY --link package-lock.json package.json yarn.lock ./
+COPY package-lock.json package.json yarn.lock ./
 RUN yarn install --frozen-lockfile --production=false
 
 # Copy application code
-COPY --link . .
+COPY . .
 
 # Build application
 RUN yarn run build
 
 # Remove development dependencies
 RUN yarn install --production=true
-
 
 # Final stage for app image
 FROM base
